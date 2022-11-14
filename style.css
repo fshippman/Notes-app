@@ -1,0 +1,165 @@
+
+
+body{
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    font-weight: light;
+    background-color: #1f1d2c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    height: 100%;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+textarea {
+    width: 500px;
+    height: 150px;
+    background-color: #363647;
+    color: white;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.textarea-title {
+    width: 500px;
+    height: 20px !important;
+}
+
+input {
+    border: unset;
+}
+
+button {
+    background-color: #706fc8;
+    border: 1px solid #1f1d2c;
+    width: 96px;
+    height: 64px;
+    border-radius: 8px;
+    padding: 2px;
+    margin-top: 16px;
+    cursor: pointer;
+    border: unset;
+}
+
+button:hover {
+    background-color: #8c8bd3
+}
+
+.trash-png{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+
+.textarea-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    flex: 1; 
+}
+
+.saved-note {
+    width: 500px;
+    min-height: 150px;
+    height: fit-content;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 32px;
+    outline: none;
+    word-wrap: break-word;
+    background-color: #262636;
+}
+
+.deleted-notes {
+    width: 500px;
+    min-height: 50px;
+    height: fit-content;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 32px;
+    outline: none;
+    word-wrap: break-word;
+    background-color: #262636;
+}
+
+ .dialog-bg {
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.dialog {
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
+    height: 50vh;
+    width: 50vw;
+    background-color: #1f1d2c;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 24px;
+}
+
+#close-window-btn {
+    position: sticky !important;
+    margin-top: 0;
+    top: 0;
+}
+
+.test {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+.footer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.footer a {
+    
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+
+
