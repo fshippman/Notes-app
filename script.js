@@ -25,10 +25,10 @@ function render() {
     content.innerHTML = '';
     content.innerHTML += /*html*/`<button onclick="renderDeletedNotes()">Deleted Notes</button><h1>Notes</h2>  
     <div class="textarea-section">
-        <textarea id="title" class="textarea-title" placeholder="title" onkeypress="clickPress(event)"></textarea> 
+        <textarea id="title" class="textarea-title" placeholder="title" onkeypress="clickPress(event)"></textarea>
         <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10" onkeypress="clickPress(event)"></textarea>
     </div>
-  
+  <!-- onkeypress="clickPress(event)" -->
     `;
 /* renderNotes NOTES */
     for (let i = 0; i < notes.length; i++) {
@@ -43,6 +43,10 @@ function render() {
     } 
 }
 
+editor.on( 'required', function( evt ) {
+    alert( 'Article content is required.' );
+    evt.cancel();
+} );
 
  /* render DELETED NOTES */  
 function renderDeletedNotes(){
@@ -69,6 +73,10 @@ function addNote() {
     save();
 }
 
+function val() {
+      if(document.getElementById("title").value==null || document.getElementById("textarea").value=="")
+        alert("blank text area")
+    } 
 
 function deleteNote(i) {
     const removedNote = notes.splice(i, 1);
@@ -117,32 +125,7 @@ function load() {
 function clickPress(e) {
     if (event.keyCode == 13) {
         // Enter was pressed
+        val();
         addNote();
     }
 }
-
-
-function openDialog() {
-    document.getElementById('dialog').classList.remove('d-none');
-    for (let i = 0; i < deletedNotes.length; i++) {
-        const deletedNote = deletedNotes[i];
-        document.getElementById('dialog-message').innerHTML += /*html*/`
-        <div class = "test">
-            <div class="deleted-notes">${deletedNote}</div>
-            <button>Test</button>
-        </div>
-        `;
-    }
-}
-
-function closeDialog() {
-    document.getElementById('dialog').classList.add('d-none');
-}
-/* var textarea = document.getElementById("textarea");
-if (textarea) {
-    textarea.addEventListener("keyup", function (e) {
-        if (e.key === "Enter") {
-            addNote();
-        }
-    })
-}*/
