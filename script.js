@@ -36,8 +36,9 @@ function render() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/`<button onclick="renderDeletedNotes()">Deleted Notes</button><h1>Notes</h2>  
     <div class="textarea-section">
-        <textarea id="title" class="textarea-title" placeholder="title" onkeypress="clickPress(event)"></textarea>
-        <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10" onkeypress="clickPress(event)"></textarea>
+        <textarea id="title" class="textarea-title" placeholder="title"></textarea>
+        <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
+        <button onclick="validateAndSave()">Save</button>
     </div>
   <!-- onkeypress="clickPress(event)" -->
     `;
@@ -81,12 +82,13 @@ function addNote() {
 }
 
 function val() {
-      if (document.getElementById("title").value==null || document.getElementById("title").value=="" 
-      || document.getElementById("textarea").value==null || document.getElementById("textarea").value=="") {
-        return false;
-      } else {
-        return true;
-      }
+      return !(document.getElementById("title").value==null || document.getElementById("title").value==""     //! means that the content of the brackets is negated  same as  //    if (x) return -x  else: return x  ! means * -1    
+      || document.getElementById("textarea").value==null || document.getElementById("textarea").value=="")    // das was in der Klammer steht ist falsch                                                                                                         
+      //if (x === true) return false
+      //    else: return true 
+      //    if (x) return -x
+      //    else: return x 
+      //    ! means * -1
     } 
 
 function deleteNote(i) {
@@ -121,15 +123,12 @@ function save() {
 
 
 
-function clickPress(e) {
-    if (event.keyCode == 13) {
-        // Enter was pressed
+function validateAndSave() {
         if(val() === true){
             addNote();
         } else {
             alert("blank text area")
-            render();
         }
     }
-}
+
 
