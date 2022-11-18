@@ -19,11 +19,22 @@ async function includeHTML() {
     }
 }
 
+function load() {
+    let notesAsText = localStorage.getItem('notes');
+    let titlesAsText = localStorage.getItem('titles');
+    let deletedNotesAsText = localStorage.getItem('deletedNotes')
+    let deletedTitlesAsText = localStorage.getItem('deletedTitles')
+    if (notesAsText && titlesAsText && deletedNotesAsText && deletedTitlesAsText) {
+        notes = JSON.parse(notesAsText);
+        titles = JSON.parse(titlesAsText);
+        deletedNotes = JSON.parse(deletedNotesAsText);
+        deletedTitles = JSON.parse(deletedTitlesAsText);
+    }
+}
 
 function render() {
     let content = document.getElementById('content');
-    content.innerHTML = '';
-    content.innerHTML += /*html*/`<button onclick="renderDeletedNotes()">Deleted Notes</button><h1>Notes</h2>  
+    content.innerHTML = /*html*/`<button onclick="renderDeletedNotes()">Deleted Notes</button><h1>Notes</h2>  
     <div class="textarea-section">
         <textarea id="title" class="textarea-title" placeholder="title" onkeypress="clickPress(event)"></textarea>
         <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10" onkeypress="clickPress(event)"></textarea>
@@ -43,10 +54,6 @@ function render() {
     } 
 }
 
-editor.on( 'required', function( evt ) {
-    alert( 'Article content is required.' );
-    evt.cancel();
-} );
 
  /* render DELETED NOTES */  
 function renderDeletedNotes(){
@@ -74,8 +81,12 @@ function addNote() {
 }
 
 function val() {
-      if(document.getElementById("title").value==null || document.getElementById("textarea").value=="")
-        alert("blank text area")
+      if (document.getElementById("title").value==null || document.getElementById("title").value=="" 
+      || document.getElementById("textarea").value==null || document.getElementById("textarea").value=="") {
+        return false;
+      } else {
+        return true;
+      }
     } 
 
 function deleteNote(i) {
@@ -108,24 +119,17 @@ function save() {
 }
 
 
-function load() {
-    let notesAsText = localStorage.getItem('notes');
-    let titlesAsText = localStorage.getItem('titles');
-    let deletedNotesAsText = localStorage.getItem('deletedNotes')
-    let deletedTitlesAsText = localStorage.getItem('deletedTitles')
-    if (notesAsText && titlesAsText && deletedNotesAsText && deletedTitlesAsText) {
-        notes = JSON.parse(notesAsText);
-        titles = JSON.parse(titlesAsText);
-        deletedNotes = JSON.parse(deletedNotesAsText);
-        deletedTitles = JSON.parse(deletedTitlesAsText);
-    }
-}
 
 
 function clickPress(e) {
     if (event.keyCode == 13) {
         // Enter was pressed
-        val();
-        addNote();
+        if(val() === true){
+            addNote();
+        } else {
+            alert("blank text area")
+            render();
+        }
     }
 }
+
