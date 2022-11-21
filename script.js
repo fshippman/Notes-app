@@ -34,11 +34,11 @@ function load() {
 
 function render() {
     let content = document.getElementById('content');
-    content.innerHTML = /*html*/`<button onclick="renderDeletedNotes()">Deleted Notes</button><h1>Notes</h2>  
+    content.innerHTML = /*html*/`<button onclick="renderDeletedNotes()"><input type="image" class="trash-png" img src="img/archive.png"></button><h1>Notes</h2>  
     <div class="textarea-section">
         <textarea id="title" class="textarea-title" placeholder="title"></textarea>
         <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
-        <button onclick="validateAndSave()">Save</button>
+        <button onclick="validateAndSave()"><input type="image" class="trash-png" img src="img/save.png"></button>
     </div>
   <!-- onkeypress="clickPress(event)" -->
     `;
@@ -59,7 +59,7 @@ function render() {
  /* render DELETED NOTES */  
 function renderDeletedNotes(){
     let content = document.getElementById('content');
-    content.innerHTML = '<button onclick="render()">Show Notes</button> <h1>Deleted Notes</h1>';
+    content.innerHTML = /*html*/ '<button onclick="render()"><input type="image" class="trash-png" img src="img/note.png"></button> <h1>Deleted Notes</h1>';
     for (let i = 0; i < deletedTitles.length; i++){
         const deletedNote = deletedNotes[i];
         const deletedTitle = deletedTitles[i];
