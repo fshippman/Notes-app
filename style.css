@@ -59,6 +59,9 @@ button {
     border: unset;
 }
 
+.hide {
+    display: none;
+}
 button:hover {
     background-color: #8c8bd3
 }
