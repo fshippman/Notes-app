@@ -34,43 +34,66 @@ function load() {
 
 function render() {
     let content = document.getElementById('content');
-    content.innerHTML = /*html*/`<button onclick="renderDeletedNotes()"><input type="image" class="trash-png" img src="img/archive.png"></button><h1>Notes</h2>  
-    <div class="textarea-section">
-        <textarea id="title" class="textarea-title" placeholder="title"></textarea>
-        <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
-        <button onclick="validateAndSave()"><input type="image" class="trash-png" img src="img/save.png"></button>
+    content.innerHTML = /*html*/`
+  
+   <div class="all">
+        <div class="main">
+            <div class="nav">
+                <button onclick="render()"><input type="image" class="trash-png" img src="img/note.png"></button>
+                <button onclick="renderDeletedNotes()"><input type="image" class="trash-png" img src="img/archive.png">
+            </div>
+            <div class="textarea-section">
+                <h1>Notes</h1>
+                <textarea id="title" class="textarea-title" placeholder="title"></textarea>
+                <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
+                <button onclick="validateAndSave()"><input type="image" class="trash-png" img src="img/save.png"></button>
+            </div>
+        </div>        
     </div>
-  <!-- onkeypress="clickPress(event)" -->
     `;
 /* renderNotes NOTES */
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
         const title = titles[i];
         content.innerHTML += /*html*/`
-        <div class="note-section">
-        <div class = "saved-note"><span class="bold">${title}</span><br><br>${note}</div>
-        <button onclick="deleteNote(${i})"><input type="image" class="trash-png" img src="img/bin (3).png"></button>
+        <div class="all">  
+            <div class="main">
+                <div class="nav"></div>
+                    <div class="note-section">
+                        <div class = "saved-note"><span class="bold">${title}</span><br><br>${note}</div>
+                        <button onclick="deleteNote(${i})"><input type="image" class="trash-png" img src="img/bin (3).png"></button>
+                    </div>
+                </div>
+            </div>
         </div>
         `;
     } 
 }
 
-
  /* render DELETED NOTES */  
 function renderDeletedNotes(){
     let content = document.getElementById('content');
-    content.innerHTML = /*html*/ '<button onclick="render()"><input type="image" class="trash-png" img src="img/note.png"></button> <h1>Deleted Notes</h1>';
+    content.innerHTML = /*html*/ `
+    <h1>Deleted Notes</h1> 
+    <div class="all"></div>
+        <div class="main">
+        <div class="nav"></div>
+            <button onclick="renderDeletedNotes()"><input type="image" class="trash-png" img src="img/archive.png"></div>
+            <button onclick="render()"><input type="image" class="trash-png" img src="img/note.png"></button>;`
+            
     for (let i = 0; i < deletedTitles.length; i++){
         const deletedNote = deletedNotes[i];
         const deletedTitle = deletedTitles[i];
         content.innerHTML += /*html*/`
+        
          <div class="note-section">
-         <div class = "saved-note"><span class="bold">${deletedTitle}</span><br><br>${deletedNote}</div>
+         <div class = "saved-note"><span class="bold">${deletedTitle}</span><br><br>${deletedNote}
          <button onclick="deletePermanent(${i})"><input type="image" class="trash-png" img src="img/bin (3).png"></button>
         </div>
-        `
+    </div>  ` 
     }
 }
+   
 
 function addNote() {
     let note = document.getElementById('textarea');
@@ -130,5 +153,3 @@ function validateAndSave() {
             alert("blank text area")
         }
     }
-
-
