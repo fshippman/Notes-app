@@ -1,7 +1,7 @@
 let notes = [];
 let titles = [];
-let deletedNotes = [];
-let deletedTitles = [];
+let deletedNotes = []; //archived
+let deletedTitles = []; //archived
 load();
 
 
@@ -83,9 +83,6 @@ function renderDeletedNotes(){
             </div>   
                 <div class="textarea-section">
                 <h1>Deleted Notes</h1>
-                <textarea id="title" class="textarea-title" placeholder="title"></textarea>
-                <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
-                <button onclick="validateAndSave()"><input type="image" class="trash-png" img src="img/save.png"></button>
             </div>
         </div>
         </div>
@@ -102,6 +99,7 @@ function renderDeletedNotes(){
                     <div class="note-section">
                         <div class = "saved-note"><span class="bold">${deletedTitle}</span><br><br>${deletedNote}</div>
                         <button onclick="deletePermanent(${i})"><input type="image" class="trash-png" img src="img/bin (3).png"></button>
+                        <button onclick="restoreNote(${i})">RESTORE</button>
                     </div>
                 </div> 
             
@@ -141,6 +139,15 @@ function deleteNote(i) {
     save();
 }
 
+function restoreNote(i){
+    const renewedNote = deletedNotes.splice(i, 1);
+    notes.push(renewedNote);
+    const renewedTitle = deletedTitles.splice(i, 1);
+    titles.push(renewedTitle);
+    renderDeletedNotes();
+    save();
+}
+
 function deletePermanent(i){
     deletedNotes.splice(i, 1);
     deletedTitles.splice(i, 1);
@@ -158,9 +165,6 @@ function save() {
     let deletedTitlesAsText = JSON.stringify(deletedTitles);
     localStorage.setItem('deletedTitles', deletedTitlesAsText);
 }
-
-
-
 
 function validateAndSave() {
         if(val() === true){
