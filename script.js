@@ -39,14 +39,26 @@ function render() {
    <div class="all">
         <div class="main">
             <div class="nav">
-                <button onclick="render()"><input type="image" class="trash-png" img src="img/note.png"></button>
-                <button onclick="renderDeletedNotes()"><input type="image" class="trash-png" img src="img/archive.png"></button>
+               <!--  <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
+                <a href="#" onclick="render()">
+                    <img src="img/note.png"><br>
+                    <span>Notes</span>
+                </a>
+               <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"><br>deleted<br>notes</button> -->
+                <a href="#" onclick="renderDeletedNotes()">
+                    <img src="img/archive.png"><br>
+                    <span>Archiv</span>
+                </a>
             </div>
             <div class="textarea-section">
                 <h1>Notes</h1>
                 <textarea id="title" class="textarea-title" placeholder="title"></textarea>
                 <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
-                <button onclick="validateAndSave()"><input type="image" class="trash-png" img src="img/save.png"></button>
+                <!-- <button onclick="validateAndSave()"><input type="image" class="symbols" img src="img/save.png"></button> -->
+                <a href="#" onclick="validateAndSave()">
+                    <img src="img/save.png">
+                    <span>Save</span>
+                </a>
             </div>
         </div>        
     </div>
@@ -61,7 +73,11 @@ function render() {
                 <div class="nav"></div>
                     <div class="note-section">
                         <div class = "saved-note"><span class="bold">${title}</span><br><br>${note}</div>
-                        <button onclick="deleteNote(${i})"><input type="image" class="trash-png" img src="img/bin (3).png"></button>
+                       <!--  <button onclick="deleteNote(${i})"><input type="image" class="symbols" img src="img/bin (3).png"></button> -->
+                        <a href="#" onclick="deleteNote(${i})">
+                        <img src="img/save.png"><br>
+                        <span>Delete</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -78,8 +94,16 @@ function renderDeletedNotes(){
     <div class="all">
         <div class="main">
         <div class="nav">
-                <button onclick="renderDeletedNotes()"><input type="image" class="trash-png" img src="img/archive.png"></button>
-                <button onclick="render()"><input type="image" class="trash-png" img src="img/note.png"></button>
+               <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"></button> -->
+                <a href="#" onclick="renderDeletedNotes()">
+                    <img src="img/archive.png"><br>
+                    <span>Archiv</span>
+                </a>
+                <!-- <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
+                <a href="#" onclick="render()">
+                    <img src="img/note.png"><br>
+                    <span>Notes</span>
+                </a>
             </div>   
                 <div class="textarea-section">
                 <h1>Deleted Notes</h1>
@@ -98,8 +122,15 @@ function renderDeletedNotes(){
             <div class="nav"></div>
                     <div class="note-section">
                         <div class = "saved-note"><span class="bold">${deletedTitle}</span><br><br>${deletedNote}</div>
-                        <button onclick="deletePermanent(${i})"><input type="image" class="trash-png" img src="img/bin (3).png"></button>
-                        <button onclick="restoreNote(${i})">RESTORE</button>
+                        <!-- <button onclick="deletePermanent(${i})"><input type="image" class="symbols" img src="img/bin (3).png"><br>delete</button> -->
+                        <a href="#" onclick="deletePermanent(${i})">
+                        <img src="#"><br>
+                        <span>Delete permanently</span>
+                        <!-- <button onclick="restoreNote(${i})">RESTORE</button> -->
+                        <a href="#" onclick="restoreNote(${i})">
+                        <img src="#"><br>
+                        <span>Restore</span>
+                </a>
                     </div>
                 </div> 
             

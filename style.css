@@ -39,6 +39,13 @@ textarea {
     font-size: inherit;
 }
 
+a {
+    display: flex;
+    align-items: center;
+    width: 64px;
+    cursor: pointer;
+}
+
 .textarea-title {
     width: 500px;
     height: 20px !important;
@@ -46,6 +53,12 @@ textarea {
 
 input {
     border: unset;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    
 }
 
 button {
@@ -59,6 +72,14 @@ button {
     border: unset;
 }
 
+.tesr {
+    background-color: rgb(250, 187, 120);
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+}
 .hide {
     display: none;
 }
@@ -66,11 +87,7 @@ button:hover {
     background-color: #8c8bd3
 }
 
-.trash-png{
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-}
+
 
 .textarea-section {
     display: flex;
