@@ -53,15 +53,7 @@ function renderTextareasection() {
         <div class="main">
             <div class="nav">
                <!--  <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
-                <a href="#" onclick="render()">
-                    <img src="img/note.png">
-                    <span>Notes</span>
-                </a>
-               <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"><br>deleted<br>notes</button> -->
-                <a href="#" onclick="renderDeletedNotes()">
-                    <img src="img/archive.png">
-                    <span>Archiv</span>
-                </a>
+               <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"><br>deleted<br>notes</button> -->  
             </div>
             <div class="textarea-section">
                 <h1>Notes</h1>
@@ -110,21 +102,15 @@ function renderDeletedNotes(){
     content.innerHTML = /*html*/ `
     <div class="all">
         <div class="main">
-        <div class="nav">
+       
                <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"></button> -->
-                <a href="#" onclick="renderDeletedNotes()">
-                    <img src="img/archive.png"><br>
-                    <span>Archiv</span>
-                </a>
+                
                 <!-- <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
-                <a href="#" onclick="render()">
-                    <img src="img/note.png">
-                    <span>Notes</span>
-                </a>
-            </div>   
-                <div class="textarea-section">
+                
+          
+               
                 <h1>Deleted Notes</h1>
-            </div>
+            
         </div>
         </div>
     </div>

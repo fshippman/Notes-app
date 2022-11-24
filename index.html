@@ -18,8 +18,34 @@
 </head>
 
 <body onload="onPageLoad();">
-
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <section class="top-nav">
+      <div>
+        Logo Here
+      </div>
+      <input id="menu-toggle" type="checkbox" />
+      <label class='menu-button-container' for="menu-toggle">
+      <div class='menu-button'></div>
+    </label>
+      <ul class="menu">
+        <li><a href="#" onclick="render()">
+            <img src="img/note.png">
+            <span>Notes</span>
+        </a>
+      
+       </li>
+        <li> <a href="#" onclick="renderDeletedNotes()">
+            <img src="img/archive.png">
+            <span>Archiv</span>
+        </a></li>
+      </ul>
+    </section>
+  
+ 
+   
     <div id="content" class="content"></div>
+
     <div w3-include-html="./templates/footer.html"></div>
 
 </body>
