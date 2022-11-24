@@ -54,12 +54,12 @@ function renderTextareasection() {
             <div class="nav">
                <!--  <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
                 <a href="#" onclick="render()">
-                    <img src="img/note.png"><br>
+                    <img src="img/note.png">
                     <span>Notes</span>
                 </a>
                <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"><br>deleted<br>notes</button> -->
                 <a href="#" onclick="renderDeletedNotes()">
-                    <img src="img/archive.png"><br>
+                    <img src="img/archive.png">
                     <span>Archiv</span>
                 </a>
             </div>
@@ -92,7 +92,7 @@ function renderNotes() {
                         <div class = "saved-note"><span class="bold">${title}</span><br><br>${note}</div>
                        <!--  <button onclick="deleteNote(${i})"><input type="image" class="symbols" img src="img/bin (3).png"></button> -->
                         <a href="#" onclick="deleteNote(${i})">
-                        <img src="img/save.png"><br>
+                        <img src="img/save.png">
                         <span>Delete</span>
                         </a>
                     </div>
@@ -118,7 +118,7 @@ function renderDeletedNotes(){
                 </a>
                 <!-- <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
                 <a href="#" onclick="render()">
-                    <img src="img/note.png"><br>
+                    <img src="img/note.png">
                     <span>Notes</span>
                 </a>
             </div>   
