@@ -35,7 +35,7 @@ function load() {
 function render() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/`
-  
+<!-- render Textareasection -->
    <div class="all">
         <div class="main">
             <div class="nav">
@@ -63,6 +63,7 @@ function render() {
         </div>        
     </div>
     `;
+
 /* renderNotes NOTES */
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
