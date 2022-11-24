@@ -2,8 +2,14 @@ let notes = [];
 let titles = [];
 let deletedNotes = []; //archived
 let deletedTitles = []; //archived
-load();
 
+
+
+async function onPageLoad(){
+    load();
+    await includeHTML();
+    render();
+}
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -19,12 +25,13 @@ async function includeHTML() {
     }
 }
 
+
 function load() {
     let notesAsText = localStorage.getItem('notes');
     let titlesAsText = localStorage.getItem('titles');
     let deletedNotesAsText = localStorage.getItem('deletedNotes')
     let deletedTitlesAsText = localStorage.getItem('deletedTitles')
-    if (notesAsText && titlesAsText && deletedNotesAsText && deletedTitlesAsText) {
+        if (notesAsText && titlesAsText && deletedNotesAsText && deletedTitlesAsText) {
         notes = JSON.parse(notesAsText);
         titles = JSON.parse(titlesAsText);
         deletedNotes = JSON.parse(deletedNotesAsText);
@@ -32,10 +39,16 @@ function load() {
     }
 }
 
-function render() {
+
+function render() { 
+	renderTextareasection();
+	renderNotes();
+}
+
+
+function renderTextareasection() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/`
-<!-- render Textareasection -->
    <div class="all">
         <div class="main">
             <div class="nav">
@@ -63,8 +76,11 @@ function render() {
         </div>        
     </div>
     `;
+}
+    
 
-/* renderNotes NOTES */
+function renderNotes() {
+    let content = document.getElementById('content');
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
         const title = titles[i];
@@ -86,12 +102,12 @@ function render() {
         `;
     } 
 }
+   
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
- /* render DELETED NOTES */  
 function renderDeletedNotes(){
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
-   
     <div class="all">
         <div class="main">
         <div class="nav">
@@ -112,8 +128,7 @@ function renderDeletedNotes(){
         </div>
         </div>
     </div>
-            `;
-            
+            `;  
     for (let i = 0; i < deletedTitles.length; i++){
         const deletedNote = deletedNotes[i];
         const deletedTitle = deletedTitles[i];
@@ -150,6 +165,7 @@ function addNote() {
     save();
 }
 
+
 function val() {
       return !(document.getElementById("title").value==null || document.getElementById("title").value==""     //! means that the content of the brackets is negated  same as  //    if (x) return -x  else: return x  ! means * -1    
       || document.getElementById("textarea").value==null || document.getElementById("textarea").value=="")    // das was in der Klammer steht ist falsch                                                                                                         
@@ -159,6 +175,7 @@ function val() {
       //    else: return x 
       //    ! means * -1
     } 
+
 
 function deleteNote(i) {
     const removedNote = notes.splice(i, 1);
@@ -171,6 +188,7 @@ function deleteNote(i) {
     save();
 }
 
+
 function restoreNote(i){
     const renewedNote = deletedNotes.splice(i, 1);
     notes.push(renewedNote);
@@ -180,12 +198,14 @@ function restoreNote(i){
     save();
 }
 
+
 function deletePermanent(i){
     deletedNotes.splice(i, 1);
     deletedTitles.splice(i, 1);
     renderDeletedNotes();
     save();
 }
+
 
 function save() {
     let notesAsText = JSON.stringify(notes);
@@ -197,6 +217,7 @@ function save() {
     let deletedTitlesAsText = JSON.stringify(deletedTitles);
     localStorage.setItem('deletedTitles', deletedTitlesAsText);
 }
+
 
 function validateAndSave() {
         if(val() === true){
