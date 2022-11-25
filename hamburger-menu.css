@@ -1,3 +1,21 @@
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 94px;
+    cursor: pointer;
+    background-color: #262636;
+    border: 0px solid #1f1d2c;
+    padding: 8px;
+    border-radius:8px;
+    color: white;
+    font-size: 13px;
+    text-decoration: none;  
+  }
+  
+  .nav-links:hover {
+    text-decoration: underline;
+  }
 
 .top-nav {
     display: flex;
@@ -8,6 +26,7 @@
     color: #FFF;
     height: 50px;
     padding: 1em;
+    box-sizing: border-box;
   }
   
   .menu {
@@ -74,6 +93,23 @@
   }
   
   @media (max-width: 700px) {
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 94px;
+        cursor: pointer;
+        background-color: #222230;
+        border: 0px solid #1f1d2c;
+        padding: 8px;
+        border-radius:8px;
+        color: white;
+        font-size: 13px;
+        text-decoration: none;  
+      }
+
+
     .menu-button-container {
       display: flex;
     }

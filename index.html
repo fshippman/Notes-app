@@ -28,20 +28,20 @@
       
       </div>
       <input id="menu-toggle" type="checkbox" />
-      <label class='menu-button-container' for="menu-toggle">
-      <div class='menu-button'></div>
-    </label>
+        <label class='menu-button-container' for="menu-toggle">
+          <div class='menu-button'></div>
+        </label>
       <ul class="menu">
-        <li><a href="#" onclick="render()">
-            
+        <li>
+          <a href="#" class="nav-links" onclick="render(), toggleMenu()">  
             <span>Notes</span>
-        </a>
-      
+          </a>
        </li>
-        <li> <a href="#" onclick="renderDeletedNotes()">
-           
+        <li> 
+          <a href="#" class="nav-links" onclick="renderDeletedNotes(), toggleMenu()">
             <span>Archiv</span>
-        </a></li>
+          </a>
+        </li>
       </ul>
     </section>
   
@@ -49,8 +49,7 @@
    
     <div id="content" class="content"></div>
 
-    <div w3-include-html="./templates/footer.html"></div>
-
+    
 </body>
 
 </html>

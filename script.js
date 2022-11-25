@@ -5,7 +5,7 @@ let deletedTitles = []; //archived
 
 
 
-async function onPageLoad(){
+async function onPageLoad() {
     load();
     await includeHTML();
     render();
@@ -31,7 +31,7 @@ function load() {
     let titlesAsText = localStorage.getItem('titles');
     let deletedNotesAsText = localStorage.getItem('deletedNotes')
     let deletedTitlesAsText = localStorage.getItem('deletedTitles')
-        if (notesAsText && titlesAsText && deletedNotesAsText && deletedTitlesAsText) {
+    if (notesAsText && titlesAsText && deletedNotesAsText && deletedTitlesAsText) {
         notes = JSON.parse(notesAsText);
         titles = JSON.parse(titlesAsText);
         deletedNotes = JSON.parse(deletedNotesAsText);
@@ -40,36 +40,39 @@ function load() {
 }
 
 
-function render() { 
-	renderTextareasection();
-	renderNotes();
+function render() {
+    renderTextareasection();
+    renderNotes();
 }
 
+function toggleMenu() {
+    var checkbox = document.getElementById("menu-toggle");
+    if (checkbox !== null) {
+        checkbox.click();
+    }
+}
 
 function renderTextareasection() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/`
-   <div class="all">
+    <h1>Notes</h1>
         <div class="main">
-            <div class="nav">
-               <!--  <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
-               <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"><br>deleted<br>notes</button> -->  
-            </div>
+          
             <div class="textarea-section">
-                <h1>Notes</h1>
+               
                 <textarea id="title" class="textarea-title" placeholder="title"></textarea>
                 <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
                 <!-- <button onclick="validateAndSave()"><input type="image" class="symbols" img src="img/save.png"></button> -->
-                <a href="#" onclick="validateAndSave()">
-                    <img src="img/save.png">
+                <a href="#" class="button" onclick="validateAndSave()">
+                    <img src="img/submit.png">
                     <span>Save</span>
                 </a>
             </div>
         </div>        
-    </div>
+   
     `;
 }
-    
+
 
 function renderNotes() {
     let content = document.getElementById('content');
@@ -79,68 +82,52 @@ function renderNotes() {
         content.innerHTML += /*html*/`
         <div class="all">  
             <div class="main">
-                <div class="nav"></div>
-                    <div class="note-section">
+               
+                    
                         <div class = "saved-note"><span class="bold">${title}</span><br><br>${note}</div>
                        <!--  <button onclick="deleteNote(${i})"><input type="image" class="symbols" img src="img/bin (3).png"></button> -->
-                        <a href="#" onclick="deleteNote(${i})">
-                        <img src="img/save.png">
+                        <a href="#" class="button" onclick="deleteNote(${i})">
+                        <img src="img/trash.png">
                         <span>Delete</span>
                         </a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
         `;
-    } 
+    }
 }
-   
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function renderDeletedNotes(){
+function renderDeletedNotes() {
     let content = document.getElementById('content');
     content.innerHTML = /*html*/ `
-    <div class="all">
-        <div class="main">
-       
-               <!--  <button onclick="renderDeletedNotes()"><input type="image" class="symbols" img src="img/archive.png"></button> -->
-                
-                <!-- <button onclick="render()"><input type="image" class="symbols" img src="img/note.png"></button> -->
-                
-          
-               
-                <h1>Deleted Notes</h1>
-            
-        </div>
-        </div>
-    </div>
-            `;  
-    for (let i = 0; i < deletedTitles.length; i++){
+    <h1>Deleted Notes</h1>
+    `;
+    for (let i = 0; i < deletedTitles.length; i++) {
         const deletedNote = deletedNotes[i];
         const deletedTitle = deletedTitles[i];
         content.innerHTML += /*html*/`
-      <div class="all">  
-            <div class="main">
-            <div class="nav"></div>
-                    <div class="note-section">
-                        <div class = "saved-note"><span class="bold">${deletedTitle}</span><br><br>${deletedNote}</div>
-                        <!-- <button onclick="deletePermanent(${i})"><input type="image" class="symbols" img src="img/bin (3).png"><br>delete</button> -->
-                        <a href="#" onclick="deletePermanent(${i})">
-                        <img src="#"><br>
-                        <span>Delete permanently</span>
-                        <!-- <button onclick="restoreNote(${i})">RESTORE</button> -->
-                        <a href="#" onclick="restoreNote(${i})">
-                        <img src="#"><br>
-                        <span>Restore</span>
+        <div class="main">
+            <div class = "saved-note"><span class="bold">${deletedTitle}</span><br><br>${deletedNote}</div>
+            <!-- <button onclick="deletePermanent(${i})"><input type="image" class="symbols" img src="img/bin (3).png"><br>delete</button> -->
+            <div class="note-button-group">
+                <a href="#" class="button" onclick="deletePermanent(${i})">
+                    <img src="img/warning.png"><br>
+                    <span>Delete</span>
                 </a>
-                    </div>
-                </div> 
-            
+                <!-- <button onclick="restoreNote(${i})">RESTORE</button> -->
+                <a href="#" class="button" onclick="restoreNote(${i})">
+                    <img src="img/move.png"><br>
+                    <span>Restore</span>
+                </a>
+            </div> 
         </div>
-    </div> ` 
+        `
     }
 }
-   
+
 
 function addNote() {
     let note = document.getElementById('textarea');
@@ -153,14 +140,14 @@ function addNote() {
 
 
 function val() {
-      return !(document.getElementById("title").value==null || document.getElementById("title").value==""     //! means that the content of the brackets is negated  same as  //    if (x) return -x  else: return x  ! means * -1    
-      || document.getElementById("textarea").value==null || document.getElementById("textarea").value=="")    // das was in der Klammer steht ist falsch                                                                                                         
-      //if (x === true) return false
-      //    else: return true 
-      //    if (x) return -x
-      //    else: return x 
-      //    ! means * -1
-    } 
+    return !(document.getElementById("title").value == null || document.getElementById("title").value == ""     //! means that the content of the brackets is negated  same as  //    if (x) return -x  else: return x  ! means * -1    
+        || document.getElementById("textarea").value == null || document.getElementById("textarea").value == "")    // das was in der Klammer steht ist falsch                                                                                                         
+    //if (x === true) return false
+    //    else: return true 
+    //    if (x) return -x
+    //    else: return x 
+    //    ! means * -1
+}
 
 
 function deleteNote(i) {
@@ -175,7 +162,7 @@ function deleteNote(i) {
 }
 
 
-function restoreNote(i){
+function restoreNote(i) {
     const renewedNote = deletedNotes.splice(i, 1);
     notes.push(renewedNote);
     const renewedTitle = deletedTitles.splice(i, 1);
@@ -185,7 +172,7 @@ function restoreNote(i){
 }
 
 
-function deletePermanent(i){
+function deletePermanent(i) {
     deletedNotes.splice(i, 1);
     deletedTitles.splice(i, 1);
     renderDeletedNotes();
@@ -206,9 +193,9 @@ function save() {
 
 
 function validateAndSave() {
-        if(val() === true){
-            addNote();
-        } else {
-            alert("blank text area")
-        }
+    if (val() === true) {
+        addNote();
+    } else {
+        alert("blank text area")
     }
+}

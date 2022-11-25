@@ -47,18 +47,27 @@ textarea {
 }
 
 a {
+  cursor: pointer;
+}
+
+.button {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 94px;
-    cursor: pointer;
+    justify-content: space-around;
+    width: 72px;
     background-color: #706fc8;
     border: 1px solid #1f1d2c;
     padding: 8px;
+    gap: 2px;
     border-radius:8px;
     color: white;
-    font-size: 13px;
+    font-size: 12px;
     text-decoration: none;  
+    /* cursor: pointer; */
+}
+
+.button:hover {
+  background-color: #8c8bd3
 }
 
 span {
@@ -70,8 +79,8 @@ input {
 }
 
 img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 }
 
 .textarea-title {
@@ -83,9 +92,7 @@ img {
     display: none;
 }
 
-a:hover {
-    background-color: #8c8bd3
-}
+
 
 
 
@@ -93,6 +100,7 @@ a:hover {
 .textarea-section {
     display: flex;
     flex-direction: column;
+    padding-bottom: 32px;
 }
 
 .content {
@@ -102,14 +110,10 @@ a:hover {
     flex: 1; 
 }
 
-.all {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
 .main {
     display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
 }
 .headersection {
     display: flex;
@@ -124,14 +128,7 @@ a:hover {
 .header {
     text-align: left;
 }
-.nav {
-    width: 200px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap:16px;
-}
+
 .saved-note {
     width: 500px;
     min-height: 150px;
@@ -139,7 +136,6 @@ a:hover {
     border: 1px solid #1f1d2c;
     border-radius: 8px;
     padding: 8px;
-    margin-top: 32px;
     outline: none;
     word-wrap: break-word;
     background-color: #262636;
@@ -156,6 +152,11 @@ a:hover {
     outline: none;
     word-wrap: break-word;
     background-color: #262636;
+}
+
+.note-button-group {
+  display: flex;
+  justify-content: space-between;
 }
 
  .dialog-bg {
