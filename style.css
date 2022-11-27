@@ -118,7 +118,7 @@ textarea {
   justify-content: space-between;
 }
 
-/* To be implemented */
+/* FORM VALIDATION */
 .dialog-bg {
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 999;
@@ -134,25 +134,32 @@ textarea {
 
 .dialog {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   overflow: auto;
   height: 50vh;
   width: 50vw;
   background-color: #1f1d2c;
-  border: 1px solid lightgray;
+  /*  border: 1px solid lightgray; */
   border-radius: 10px;
   padding: 24px;
+}
+
+.dialog-exit {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-exit img {
+  height: 32px;
+  width: 32px;
 }
 
 .d-none {
   display: none;
 }
 
-#close-window-btn {
-  position: sticky !important;
-  margin-top: 0;
-  top: 0;
-}
 /* --------------------------MEDIA-------------------------- */
 @media(max-width: 768px) {
   textarea {

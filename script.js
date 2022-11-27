@@ -139,7 +139,7 @@ function addNote() {
 
 function val() {
     return !(document.getElementById("title").value == null || document.getElementById("title").value == ""     //! means that the content of the brackets is negated (False) same as  //    if (x) return -x  else: return x  ! means * -1    
-        || document.getElementById("textarea").value == null || document.getElementById("textarea").value == "");                                                                                                             
+        || document.getElementById("textarea").value == null || document.getElementById("textarea").value == "");
     //if (x === true) return false
     //    else: return true 
     //    if (x) return -x
@@ -192,6 +192,23 @@ function validateAndSave() {
     if (val() === true) {
         addNote();
     } else {
-        alert("blank text area");
+       openDialog();
     }
 }
+
+function openDialog() {
+    document.getElementById('dialog').classList.remove('d-none');
+    }
+
+
+function closeDialog() {
+    document.getElementById('dialog').classList.add('d-none');
+}
+/* var textarea = document.getElementById("textarea");
+if (textarea) {
+    textarea.addEventListener("keyup", function (e) {
+        if (e.key === "Enter") {
+            addNote();
+        }
+    })
+}*/

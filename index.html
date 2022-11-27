@@ -2,52 +2,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <title>Notes</title>
-
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="hamburger-menu.css">
-
-
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <title>Notes</title>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="hamburger-menu.css">
 </head>
 
 <body onload="onPageLoad();">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <section class="top-nav">
-      <div>
-        <img src="img/android-chrome-192x192.png">
-      
-      </div>
-      <input id="menu-toggle" type="checkbox" />
-        <label class='menu-button-container' for="menu-toggle">
-          <div class='menu-button'></div>
-        </label>
-      <ul class="menu">
-        <li>
-          <a href="#" class="nav-links" onclick="render(), toggleMenu()">  
-            <span>Notes</span>
-          </a>
-       </li>
-        <li> 
-          <a href="#" class="nav-links" onclick="renderDeletedNotes(), toggleMenu()">
-            <span>Archiv</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-   
-    <div id="content" class="content"></div>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <section class="top-nav">
+    <div>
+      <img src="img/android-chrome-192x192.png">
+    </div>
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+      <div class='menu-button'></div>
+    </label>
+    <ul class="menu">
+      <li>
+        <a href="#" class="nav-links" onclick="render(), toggleMenu()">
+          <span>Notes</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-links" onclick="renderDeletedNotes(), toggleMenu()">
+          <span>Archiv</span>
+        </a>
+      </li>
+    </ul>
+  </section>
 
-    
+  <div id="dialog" class="dialog-bg d-none">
+    <div class="dialog">
+      <div class="dialog-exit">
+        <a><img src="img/x.png" onclick="closeDialog()"></a>
+      </div>
+      <h1>Ooops!</h1>
+      <p id="dialog-message">Please enter values into the textfields</p>
+    </div>
+  </div>
+
+  <div id="content" class="content"></div>
 </body>
 
 </html>
