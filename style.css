@@ -153,8 +153,8 @@ textarea {
   margin-top: 0;
   top: 0;
 }
-
-@media(max-width: 768px){
+/* --------------------------MEDIA-------------------------- */
+@media(max-width: 768px) {
   textarea {
     width: 400px;
     height: 150px;
@@ -168,7 +168,7 @@ textarea {
     font-family: inherit;
     font-size: inherit;
   }
-  
+
   .textarea-title {
     width: 400px;
     height: 20px !important;
@@ -185,9 +185,9 @@ textarea {
     word-wrap: break-word;
     background-color: #262636;
   }
-
 }
-@media(max-width: 480px){
+
+@media(max-width: 480px) {
   textarea {
     width: 250px;
     height: 150px;
@@ -201,7 +201,7 @@ textarea {
     font-family: inherit;
     font-size: inherit;
   }
-  
+
   .textarea-title {
     width: 250px;
     height: 20px !important;
@@ -218,9 +218,9 @@ textarea {
     word-wrap: break-word;
     background-color: #262636;
   }
-
 }
-@media(max-width: 280px){
+
+@media(max-width: 280px) {
   textarea {
     width: 200px;
     height: 150px;
@@ -234,7 +234,7 @@ textarea {
     font-family: inherit;
     font-size: inherit;
   }
-  
+
   .textarea-title {
     width: 200px;
     height: 20px !important;
@@ -251,5 +251,4 @@ textarea {
     word-wrap: break-word;
     background-color: #262636;
   }
-
 }
