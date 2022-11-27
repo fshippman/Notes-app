@@ -22,8 +22,6 @@ h1 {
   text-align: center;
 }
 
-
-
 a {
   cursor: pointer;
 }
@@ -120,6 +118,7 @@ textarea {
   justify-content: space-between;
 }
 
+/* To be implemented */
 .dialog-bg {
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 999;
@@ -153,4 +152,104 @@ textarea {
   position: sticky !important;
   margin-top: 0;
   top: 0;
+}
+
+@media(max-width: 768px){
+  textarea {
+    width: 400px;
+    height: 150px;
+    background-color: #363647;
+    color: white;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  .textarea-title {
+    width: 400px;
+    height: 20px !important;
+  }
+
+  .note {
+    width: 400px;
+    min-height: 150px;
+    height: fit-content;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    word-wrap: break-word;
+    background-color: #262636;
+  }
+
+}
+@media(max-width: 480px){
+  textarea {
+    width: 250px;
+    height: 150px;
+    background-color: #363647;
+    color: white;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  .textarea-title {
+    width: 250px;
+    height: 20px !important;
+  }
+
+  .note {
+    width: 250px;
+    min-height: 150px;
+    height: fit-content;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    word-wrap: break-word;
+    background-color: #262636;
+  }
+
+}
+@media(max-width: 280px){
+  textarea {
+    width: 200px;
+    height: 150px;
+    background-color: #363647;
+    color: white;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  .textarea-title {
+    width: 200px;
+    height: 20px !important;
+  }
+
+  .note {
+    width: 200px;
+    min-height: 150px;
+    height: fit-content;
+    border: 1px solid #1f1d2c;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    word-wrap: break-word;
+    background-color: #262636;
+  }
+
 }

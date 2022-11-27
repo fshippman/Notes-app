@@ -138,8 +138,8 @@ function addNote() {
 
 
 function val() {
-    return !(document.getElementById("title").value == null || document.getElementById("title").value == ""     //! means that the content of the brackets is negated  same as  //    if (x) return -x  else: return x  ! means * -1    
-        || document.getElementById("textarea").value == null || document.getElementById("textarea").value == "");    // das was in der Klammer steht ist falsch                                                                                                         
+    return !(document.getElementById("title").value == null || document.getElementById("title").value == ""     //! means that the content of the brackets is negated (False) same as  //    if (x) return -x  else: return x  ! means * -1    
+        || document.getElementById("textarea").value == null || document.getElementById("textarea").value == "");                                                                                                             
     //if (x === true) return false
     //    else: return true 
     //    if (x) return -x
