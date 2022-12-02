@@ -50,10 +50,12 @@ function toggleMenu() {
 
 function renderNotes() {
     let content = document.getElementById('content');
+    content.innerHTML = /*html*/ `
+    `;
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
         const title = titles[i];
-        content.innerHTML = /*html*/`
+        content.innerHTML += /*html*/`
             <div class="all">  
                 <div class="main"> 
                     <div class = "note">
@@ -73,6 +75,8 @@ function renderNotes() {
 
 function renderDeletedNotes() {
     let content = document.getElementById('content');
+    content.innerHTML = /*html*/ `
+    `;
     for (let i = 0; i < deletedTitles.length; i++) {
         const deletedNote = deletedNotes[i];
         const deletedTitle = deletedTitles[i];
@@ -105,8 +109,10 @@ function addNote() {
     let title = document.getElementById('title');
     notes.push(note.value);
     titles.push(title.value);
-    render();
+    renderNotes();
     save();
+    document.getElementById("title").value= "";
+    document.getElementById("textarea").value= "";
 }
 
 
@@ -126,7 +132,7 @@ function deleteNote(i) {
     const removedTitle = titles.splice(i, 1);
     deletedNotes.push(removedNote);
     deletedTitles.push(removedTitle);
-    render();
+    renderNotes();
     save();
 }
 
