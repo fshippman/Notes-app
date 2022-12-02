@@ -70,6 +70,10 @@ function renderNotes() {
             </div>
         `;
     }
+    addDNoneTrash();
+    removeDNoneMessage();
+    
+    
 }
 
 
@@ -100,7 +104,8 @@ function renderDeletedNotes() {
             </div>
         `;
     }
-    
+    addDNoneMessage();
+    removeDNoneTrash();
 }
 
 
@@ -179,10 +184,45 @@ function openDialog() {
     document.getElementById('dialog').classList.remove('d-none');
     }
 
-
 function closeDialog() {
     document.getElementById('dialog').classList.add('d-none');
 }
+
+function addDNoneMessage() {
+    let messagecontainer = document.getElementById("message-container")
+    messagecontainer.classList.add('d-none')
+    
+}
+function addDNoneTrash() {
+    let trashcontainer = document.getElementById("trash-container")
+    trashcontainer.classList.add('d-none')
+    
+}
+function removeDNoneTrash() {
+    let trashcontainer = document.getElementById("trash-container")
+    trashcontainer.classList.remove('d-none')
+    
+}
+function removeDNoneMessage() {
+    let messagecontainer = document.getElementById("message-container")
+    messagecontainer.classList.remove('d-none')
+    
+}
+
+
+
+
+/* 
+function dNone() {
+    let trashbag = document.getElementById("h2");
+    let createcontainer = document.getElementById("createMessage-container");
+    createcontainer.className = "d-none";
+    if (trashbag.className == "d-none") {
+      trashbag.classList.remove("d-none");
+    }
+  } */
+  
+  
 /* var textarea = document.getElementById("textarea");
 if (textarea) {
     textarea.addEventListener("keyup", function (e) {
