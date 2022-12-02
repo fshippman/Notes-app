@@ -133,8 +133,8 @@ function val() {
 
 
 function deleteNote(i) {
-    const removedNote = notes.splice(i, 1);
-    const removedTitle = titles.splice(i, 1);
+    const removedNote = notes.splice(i, 1)[0];
+    const removedTitle = titles.splice(i, 1)[0];
     deletedNotes.push(removedNote);
     deletedTitles.push(removedTitle);
     renderNotes();
@@ -143,8 +143,8 @@ function deleteNote(i) {
 
 
 function restoreNote(i) {
-    const renewedNote = deletedNotes.splice(i, 1);
-    const renewedTitle = deletedTitles.splice(i, 1);
+    const renewedNote = deletedNotes.splice(i, 1)[0];
+    const renewedTitle = deletedTitles.splice(i, 1)[0];
     notes.push(renewedNote);
     titles.push(renewedTitle);
     renderDeletedNotes();
