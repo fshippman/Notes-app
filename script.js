@@ -7,7 +7,7 @@ let deletedTitles = []; //archived
 async function onPageLoad() {
     load();
     await includeHTML();
-    render();
+    renderNotes();
 }
 
 
@@ -40,12 +40,6 @@ function load() {
 }
 
 
-function render() {
-    renderTextareasection();
-    renderNotes();
-}
-
-
 function toggleMenu() {
     var checkbox = document.getElementById("menu-toggle");
     if (checkbox !== null) {
@@ -54,31 +48,12 @@ function toggleMenu() {
 }
 
 
-function renderTextareasection() {
-    let content = document.getElementById('content');
-    content.innerHTML = /*html*/`
-    <h1>Notes</h1>
-        <div class="main">
-            <div class="textarea-section">
-                <textarea id="title" class="textarea-title" placeholder="title"></textarea>
-                <textarea id="textarea" placeholder="notes - press enter to submit" cols="30" rows="10"></textarea>
-                <!-- <button onclick="validateAndSave()"><input type="image" class="symbols" img src="img/save.png"></button> -->
-                <a href="#" class="button" onclick="validateAndSave()">
-                    <img src="img/submit.png">
-                    <span>Save</span>
-                </a>
-            </div>
-        </div>        
-    `;
-}
-
-
 function renderNotes() {
     let content = document.getElementById('content');
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
         const title = titles[i];
-        content.innerHTML += /*html*/`
+        content.innerHTML = /*html*/`
             <div class="all">  
                 <div class="main"> 
                     <div class = "note">
@@ -98,9 +73,6 @@ function renderNotes() {
 
 function renderDeletedNotes() {
     let content = document.getElementById('content');
-    content.innerHTML = /*html*/ `
-        <h1>Deleted Notes</h1>
-    `;
     for (let i = 0; i < deletedTitles.length; i++) {
         const deletedNote = deletedNotes[i];
         const deletedTitle = deletedTitles[i];
@@ -124,6 +96,7 @@ function renderDeletedNotes() {
             </div>
         `;
     }
+    
 }
 
 
