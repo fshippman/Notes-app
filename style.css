@@ -61,14 +61,14 @@ align-items: center;
   display: flex;
   flex-direction: column;
   margin-bottom: 32px;
-  
+  margin-right: 32px;
 }
 
 .textarea-section {
   display: flex;
   flex-direction: column;
-  padding-bottom: 32px;
-
+  margin-bottom: 32px;
+  margin-right: 32px;
 }
 
 textarea {
@@ -171,6 +171,16 @@ textarea {
 
 /* --------------------------MEDIA-------------------------- */
 @media(max-width: 768px) {
+  .main {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+  
+  .textarea-section {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
   textarea {
     width: 400px;
     height: 150px;
@@ -204,6 +214,16 @@ textarea {
 }
 
 @media(max-width: 480px) {
+  .main {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+  
+  .textarea-section {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
   textarea {
     width: 250px;
     height: 150px;
@@ -237,6 +257,16 @@ textarea {
 }
 
 @media(max-width: 280px) {
+  .main {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+  
+  .textarea-section {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
   textarea {
     width: 200px;
     height: 150px;
