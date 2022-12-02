@@ -53,27 +53,30 @@ function renderNotes() {
     content.innerHTML = /*html*/ `
     `;
     for (let i = 0; i < notes.length; i++) {
-        const note = notes[i];
-        const title = titles[i];
-        content.innerHTML += /*html*/`
-            <div class="all">  
-                <div class="main"> 
-                    <div class = "note">
-                        <span class="bold">${title}</span><br><br>${note}
-                    </div>
-                    <!--  <button onclick="deleteNote(${i})"><input type="image" class="symbols" img src="img/bin (3).png"></button> -->
-                    <a href="#" class="button" onclick="deleteNote(${i})">
-                        <img src="img/trash.png">
-                        <span>Delete</span>
-                    </a>
-                </div>
-            </div>
-        `;
+        content.innerHTML += createNoteHTML(i);
     }
     addDNoneTrash();
     removeDNoneMessage();
-    
-    
+}
+
+
+function createNoteHTML(i){
+    const note = notes[i];
+    const title = titles[i];
+    return /*html*/`
+    <div class="all">  
+        <div class="main"> 
+            <div class = "note">
+                <span class="bold">${title}</span><br><br>${note}
+            </div>
+            <!--  <button onclick="deleteNote(${i})"><input type="image" class="symbols" img src="img/bin (3).png"></button> -->
+            <a href="#" class="button" onclick="deleteNote(${i})">
+                <img src="img/trash.png">
+                <span>Delete</span>
+            </a>
+        </div>
+    </div>
+`;
 }
 
 
@@ -82,30 +85,35 @@ function renderDeletedNotes() {
     content.innerHTML = /*html*/ `
     `;
     for (let i = 0; i < deletedTitles.length; i++) {
-        const deletedNote = deletedNotes[i];
-        const deletedTitle = deletedTitles[i];
-        content.innerHTML += /*html*/`
-            <div class="main">
-                <div class = "note">
-                    <span class="bold">${deletedTitle}</span><br><br>${deletedNote}
-                </div>
-                <!-- <button onclick="deletePermanent(${i})"><input type="image" class="symbols" img src="img/bin (3).png"><br>delete</button> -->
-                <div class="note-button-group">
-                    <a href="#" class="button" onclick="deletePermanent(${i})">
-                        <img src="img/warning.png"><br>
-                        <span>Delete</span>
-                    </a>
-                    <!-- <button onclick="restoreNote(${i})">RESTORE</button> -->
-                    <a href="#" class="button" onclick="restoreNote(${i})">
-                        <img src="img/move.png"><br>
-                        <span>Restore</span>
-                    </a>
-                </div> 
-            </div>
-        `;
+       content.innerHTML += createDeletedNoteHTML(i);
     }
     addDNoneMessage();
     removeDNoneTrash();
+}
+
+
+function createDeletedNoteHTML(i){
+    const deletedNote = deletedNotes[i];
+    const deletedTitle = deletedTitles[i];
+    return /*html*/`
+    <div class="main">
+        <div class = "note">
+            <span class="bold">${deletedTitle}</span><br><br>${deletedNote}
+        </div>
+        <!-- <button onclick="deletePermanent(${i})"><input type="image" class="symbols" img src="img/bin (3).png"><br>delete</button> -->
+        <div class="note-button-group">
+            <a href="#" class="button" onclick="deletePermanent(${i})">
+                <img src="img/warning.png"><br>
+                <span>Delete</span>
+            </a>
+            <!-- <button onclick="restoreNote(${i})">RESTORE</button> -->
+            <a href="#" class="button" onclick="restoreNote(${i})">
+                <img src="img/move.png"><br>
+                <span>Restore</span>
+            </a>
+        </div> 
+    </div>
+`;
 }
 
 
@@ -121,14 +129,11 @@ function addNote() {
 }
 
 
-function val() {
-    return !(document.getElementById("title").value == null || document.getElementById("title").value == ""     //! means that the content of the brackets is negated (False) same as  //    if (x) return -x  else: return x  ! means * -1    
-        || document.getElementById("textarea").value == null || document.getElementById("textarea").value == "");
-    //if (x === true) return false
-    //    else: return true 
-    //    if (x) return -x
-    //    else: return x 
-    //    ! means * -1
+function formIsValid() {
+    let titleValue = document.getElementById("title").value.replaceAll('\n', '');
+    let textareaValue = document.getElementById("textarea").value.replaceAll('\n', '');
+    return !(titleValue == null || titleValue == ""     //! means that the content of the brackets is negated (False) same as  //    if (x) return -x  else: return x  ! means * -1    
+    || textareaValue == null || textareaValue == "");
 }
 
 
@@ -173,61 +178,43 @@ function save() {
 
 
 function validateAndSave() {
-    if (val() === true) {
+    if (formIsValid() === true) {
         addNote();
     } else {
        openDialog();
     }
 }
 
+
 function openDialog() {
     document.getElementById('dialog').classList.remove('d-none');
     }
+
 
 function closeDialog() {
     document.getElementById('dialog').classList.add('d-none');
 }
 
+
 function addDNoneMessage() {
     let messagecontainer = document.getElementById("message-container")
-    messagecontainer.classList.add('d-none')
-    
+    messagecontainer.classList.add('d-none')  
 }
+
+
 function addDNoneTrash() {
     let trashcontainer = document.getElementById("trash-container")
     trashcontainer.classList.add('d-none')
     
+
 }
 function removeDNoneTrash() {
     let trashcontainer = document.getElementById("trash-container")
-    trashcontainer.classList.remove('d-none')
-    
+    trashcontainer.classList.remove('d-none')   
 }
+
+
 function removeDNoneMessage() {
     let messagecontainer = document.getElementById("message-container")
     messagecontainer.classList.remove('d-none')
-    
 }
-
-
-
-
-/* 
-function dNone() {
-    let trashbag = document.getElementById("h2");
-    let createcontainer = document.getElementById("createMessage-container");
-    createcontainer.className = "d-none";
-    if (trashbag.className == "d-none") {
-      trashbag.classList.remove("d-none");
-    }
-  } */
-  
-  
-/* var textarea = document.getElementById("textarea");
-if (textarea) {
-    textarea.addEventListener("keyup", function (e) {
-        if (e.key === "Enter") {
-            addNote();
-        }
-    })
-}*/
