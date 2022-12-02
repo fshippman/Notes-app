@@ -48,10 +48,16 @@ function toggleMenu() {
 }
 
 
+//clears old content to show actual content otherwise it would just add the new content (to old content)
+function clearRenderedContent() {
+    return /*html*/ `
+    `;
+}
+
+
 function renderNotes() {
     let content = document.getElementById('content');
-    content.innerHTML = /*html*/ `
-    `;
+    content.innerHTML = clearRenderedContent();
     for (let i = 0; i < notes.length; i++) {
         content.innerHTML += createNoteHTML(i);
     }
@@ -69,7 +75,6 @@ function createNoteHTML(i){
             <div class = "note">
                 <span class="bold">${title}</span><br><br>${note}
             </div>
-            <!--  <button onclick="deleteNote(${i})"><input type="image" class="symbols" img src="img/bin (3).png"></button> -->
             <a href="#" class="button" onclick="deleteNote(${i})">
                 <img src="img/trash.png">
                 <span>Delete</span>
@@ -82,8 +87,7 @@ function createNoteHTML(i){
 
 function renderDeletedNotes() {
     let content = document.getElementById('content');
-    content.innerHTML = /*html*/ `
-    `;
+    content.innerHTML = clearRenderedContent();
     for (let i = 0; i < deletedTitles.length; i++) {
        content.innerHTML += createDeletedNoteHTML(i);
     }
@@ -100,13 +104,11 @@ function createDeletedNoteHTML(i){
         <div class = "note">
             <span class="bold">${deletedTitle}</span><br><br>${deletedNote}
         </div>
-        <!-- <button onclick="deletePermanent(${i})"><input type="image" class="symbols" img src="img/bin (3).png"><br>delete</button> -->
         <div class="note-button-group">
             <a href="#" class="button" onclick="deletePermanent(${i})">
                 <img src="img/warning.png"><br>
                 <span>Delete</span>
             </a>
-            <!-- <button onclick="restoreNote(${i})">RESTORE</button> -->
             <a href="#" class="button" onclick="restoreNote(${i})">
                 <img src="img/move.png"><br>
                 <span>Restore</span>
@@ -124,8 +126,8 @@ function addNote() {
     titles.push(title.value);
     renderNotes();
     save();
-    document.getElementById("title").value= "";
-    document.getElementById("textarea").value= "";
+    note.value = "";
+    title.value = "";
 }
 
 
@@ -178,7 +180,7 @@ function save() {
 
 
 function validateAndSave() {
-    if (formIsValid() === true) {
+    if (formIsValid()) {
         addNote();
     } else {
        openDialog();
@@ -205,9 +207,9 @@ function addDNoneMessage() {
 function addDNoneTrash() {
     let trashcontainer = document.getElementById("trash-container")
     trashcontainer.classList.add('d-none')
-    
-
 }
+
+
 function removeDNoneTrash() {
     let trashcontainer = document.getElementById("trash-container")
     trashcontainer.classList.remove('d-none')   
